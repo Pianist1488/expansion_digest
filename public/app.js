@@ -110,6 +110,8 @@ const caseGrid = document.querySelector("#caseGrid");
 const filters = document.querySelectorAll(".filter");
 const guideOptions = document.querySelectorAll(".guide-option");
 const guideResult = document.querySelector("#guideResult");
+const progressBar = document.querySelector(".read-progress span");
+const navLinks = document.querySelectorAll("[data-nav]");
 
 function renderCases(filter = "all") {
   caseGrid.innerHTML = cases
@@ -117,7 +119,10 @@ function renderCases(filter = "all") {
       const isHidden = filter !== "all" && !item.tags.includes(filter);
       return `
         <article class="case-card ${isHidden ? "is-hidden" : ""}" data-tags="${item.tags.join(" ")}">
-          <div class="case-meta">${item.meta}</div>
+          <div class="case-topline">
+            <div class="case-meta">${item.meta}</div>
+            <span>${item.label}</span>
+          </div>
           <h3>${item.brand}</h3>
           <p>${item.model}</p>
           <div class="case-stat">${item.stat}</div>
@@ -126,7 +131,6 @@ function renderCases(filter = "all") {
             <p>${item.details}</p>
           </details>
           <div class="case-tags">
-            <span>${item.label}</span>
             ${item.tags.map((tag) => `<span>${tagName(tag)}</span>`).join("")}
           </div>
         </article>
@@ -158,6 +162,8 @@ function renderGuide(key) {
       <a class="button primary" href="${clubUrl}" target="_blank" rel="noreferrer">Обсудить в клубе</a>
     </div>
   `;
+  guideResult.classList.remove("is-swapping");
+  window.requestAnimationFrame(() => guideResult.classList.add("is-swapping"));
 }
 
 filters.forEach((button) => {
@@ -176,5 +182,55 @@ guideOptions.forEach((button) => {
   });
 });
 
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = max > 0 ? Math.min(scrollTop / max, 1) : 0;
+  progressBar.style.transform = `scaleX(${progress})`;
+}
+
+function setActiveNav() {
+  const sections = ["events", "cases", "guide", "join"]
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+  const active = sections
+    .filter((section) => section.getBoundingClientRect().top < window.innerHeight * 0.42)
+    .pop();
+
+  navLinks.forEach((link) => {
+    link.classList.toggle("is-active", active?.id === link.dataset.nav);
+  });
+}
+
+function setupReveal() {
+  const targets = document.querySelectorAll("[data-reveal]");
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((target) => target.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.14 }
+  );
+
+  targets.forEach((target) => observer.observe(target));
+}
+
+window.addEventListener("scroll", () => {
+  updateProgress();
+  setActiveNav();
+}, { passive: true });
+
 renderCases();
 renderGuide("frequency");
+setupReveal();
+updateProgress();
+setActiveNav();
