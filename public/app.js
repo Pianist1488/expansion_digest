@@ -8,6 +8,11 @@ const cases = [
     stat: "250K+ подписчиков",
     model: "Мужское белье превращено из редкой покупки в ежемесячную привычку через дизайн-дропы.",
     details: "MVP для РФ: комплект на 12 месяцев со скидкой или автоплатеж на своем сайте. Подходит категориям с низкой частотой переоценки: носки, белье, базовые футболки, лезвия.",
+    sources: [
+      ["Сайт", "https://onthatass.com"],
+      ["Instagram", "https://www.instagram.com/onthatass/"],
+      ["TikTok", "https://www.tiktok.com/@onthatass"]
+    ],
     tags: ["subscription", "russia"],
     label: "Можно в РФ"
   },
@@ -17,6 +22,11 @@ const cases = [
     stat: "$1.85B оценка",
     model: "Функциональная газировка продается не как ЗОЖ, а как ностальгия по массовой соде.",
     details: "Сильная модель для понимания рефрейминга, но прямой перенос в РФ ограничен упаковочным языком, ритейлом и регуляторикой заявлений о пользе.",
+    sources: [
+      ["Сайт", "https://drinkolipop.com"],
+      ["Instagram", "https://www.instagram.com/drinkolipop/"],
+      ["TikTok", "https://www.tiktok.com/@drinkolipop"]
+    ],
     tags: ["price"],
     label: "Honest no-fit"
   },
@@ -26,6 +36,11 @@ const cases = [
     stat: "$2.5B оценка",
     model: "Разовая лабораторная услуга упакована в годовую подписку с траекторией показателей.",
     details: "Подходит как концепт для чек-апов и wellness, но врачебная интерпретация и medical-regulatory стек требуют локальной юридической проверки.",
+    sources: [
+      ["Сайт", "https://www.functionhealth.com"],
+      ["Instagram", "https://www.instagram.com/functionhealth/"],
+      ["Mark Hyman", "https://www.instagram.com/drmarkhyman/"]
+    ],
     tags: ["subscription"],
     label: "Концептуально"
   },
@@ -35,6 +50,11 @@ const cases = [
     stat: "$30M+ выручки",
     model: "Ежедневный влог основателей стал главным каналом доверия и запуска новых артикулов.",
     details: "MVP для РФ: Telegram, YouTube и короткие видео с производства, закупок, упаковки и конфликтов. Нужен основатель, готовый стать медиа-каналом.",
+    sources: [
+      ["Сайт", "https://middaysquares.com"],
+      ["Instagram", "https://www.instagram.com/middaysquares/"],
+      ["TikTok", "https://www.tiktok.com/@middaysquares"]
+    ],
     tags: ["content", "russia"],
     label: "Можно в РФ"
   },
@@ -44,6 +64,11 @@ const cases = [
     stat: "$100M+ выручки",
     model: "Коммодити-продукт стал премиальным через подписку и реальное обязательство отдавать 50% прибыли.",
     details: "Модель полезна как ориентир, но в РФ mission-driven позиционирование такого масштаба сложнее переносится без доверенной инфраструктуры и отчетности.",
+    sources: [
+      ["AU сайт", "https://au.whogivesacrap.org"],
+      ["US сайт", "https://us.whogivesacrap.org"],
+      ["Instagram", "https://www.instagram.com/whogivesacraptp/"]
+    ],
     tags: ["subscription", "price"],
     label: "Honest no-fit"
   },
@@ -53,6 +78,11 @@ const cases = [
     stat: "12.4 млрд ₽",
     model: "Контент основателя, 12 коллекций в год, сайт и офлайн работают как единый путь клиента.",
     details: "MVP: коллекции по месяцам, контент-блог, малый отшив и свой канал продаж. Маркетплейсы не должны быть единственной точкой контакта.",
+    sources: [
+      ["Сайт", "https://12storeez.com"],
+      ["Instagram", "https://www.instagram.com/12storeez_official/"],
+      ["Telegram", "https://t.me/twelvestoreez"]
+    ],
     tags: ["content", "channel", "russia"],
     label: "Можно в РФ"
   },
@@ -62,6 +92,12 @@ const cases = [
     stat: "$400M выручки",
     model: "Гордон Рамзи и живые демонстрации в Costco создали канал, который конкуренты не могли быстро скопировать.",
     details: "MVP для РФ: уикенд-демо в Metro или Ленте, локальный эксперт с долей в продукте, продукт, который можно убедительно показать руками.",
+    sources: [
+      ["Сайт", "https://hexclad.com"],
+      ["Instagram", "https://www.instagram.com/hexclad/"],
+      ["TikTok", "https://www.tiktok.com/@hexclad"],
+      ["YouTube", "https://www.youtube.com/@HexClad"]
+    ],
     tags: ["channel", "russia"],
     label: "Можно в РФ"
   },
@@ -71,6 +107,11 @@ const cases = [
     stat: "£40M сделка",
     model: "Свежая паста стала ресторанным опытом дома: коробка, шеф, доставка и повторяемость.",
     details: "MVP для РФ: премиум-коробка на 2 порции, 4 рецепта в месяц, видеоинструкция от шефа, старт в Москве или Петербурге.",
+    sources: [
+      ["Сайт", "https://pastaevangelists.com"],
+      ["Instagram", "https://www.instagram.com/pastaevangelists/"],
+      ["TikTok", "https://www.tiktok.com/@pastaevangelists"]
+    ],
     tags: ["subscription", "content", "russia"],
     label: "Можно в РФ"
   }
@@ -129,6 +170,9 @@ function renderCases(filter = "all") {
           <details class="case-details">
             <summary>Разобрать модель</summary>
             <p>${item.details}</p>
+            <div class="source-links" aria-label="Источники">
+              ${item.sources.map(([label, url]) => `<a href="${url}" target="_blank" rel="noreferrer">${label}</a>`).join("")}
+            </div>
           </details>
           <div class="case-tags">
             ${item.tags.map((tag) => `<span>${tagName(tag)}</span>`).join("")}

@@ -668,6 +668,47 @@ details.case-details p {
   font-size: 14px;
 }
 
+.source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.source-links::before {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  content: "Источники";
+}
+
+.source-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.66);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 850;
+  text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.source-links a::after {
+  margin-left: 6px;
+  content: "↗";
+}
+
+.source-links a:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
 .tool-section {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
@@ -713,6 +754,13 @@ details.case-details p {
 .tool-steps p {
   color: #d8e2dc;
   line-height: 1.5;
+}
+
+.tool-steps a {
+  display: inline-flex;
+  margin-top: 10px;
+  color: #fff;
+  font-weight: 900;
 }
 
 .guide-layout {
