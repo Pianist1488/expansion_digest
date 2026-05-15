@@ -153,6 +153,46 @@ const guideOptions = document.querySelectorAll(".guide-option");
 const guideResult = document.querySelector("#guideResult");
 const progressBar = document.querySelector(".read-progress span");
 const navLinks = document.querySelectorAll("[data-nav]");
+const sessionId = getId("expansio_session_id", true);
+const visitorId = getId("expansio_visitor_id");
+const seenSections = new Set();
+let maxScrollDepth = 0;
+
+function getId(key, sessionOnly = false) {
+  const storage = sessionOnly ? window.sessionStorage : window.localStorage;
+  const existing = storage.getItem(key);
+  if (existing) {
+    return existing;
+  }
+
+  const next = window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  storage.setItem(key, next);
+  return next;
+}
+
+function track(event, payload = {}) {
+  const body = {
+    event,
+    sessionId,
+    visitorId,
+    path: window.location.pathname + window.location.hash,
+    referrer: document.referrer,
+    payload
+  };
+
+  const json = JSON.stringify(body);
+  if (navigator.sendBeacon) {
+    navigator.sendBeacon("/api/track", new Blob([json], { type: "application/json" }));
+    return;
+  }
+
+  fetch("/api/track", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: json,
+    keepalive: true
+  }).catch(() => {});
+}
 
 function renderCases(filter = "all") {
   caseGrid.innerHTML = cases
@@ -215,6 +255,7 @@ filters.forEach((button) => {
     filters.forEach((item) => item.classList.remove("is-active"));
     button.classList.add("is-active");
     renderCases(button.dataset.filter);
+    track("filter_click", { filter: button.dataset.filter, label: button.textContent.trim() });
   });
 });
 
@@ -223,6 +264,7 @@ guideOptions.forEach((button) => {
     guideOptions.forEach((item) => item.classList.remove("is-active"));
     button.classList.add("is-active");
     renderGuide(button.dataset.guide);
+    track("guide_select", { guide: button.dataset.guide, label: button.querySelector("span")?.textContent || "" });
   });
 });
 
@@ -258,6 +300,10 @@ function setupReveal() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
+          if (entry.target.id && !seenSections.has(entry.target.id)) {
+            seenSections.add(entry.target.id);
+            track("section_view", { section: entry.target.id });
+          }
           observer.unobserve(entry.target);
         }
       });
@@ -268,9 +314,52 @@ function setupReveal() {
   targets.forEach((target) => observer.observe(target));
 }
 
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a");
+  const summary = event.target.closest("summary");
+
+  if (summary && summary.closest(".case-details")) {
+    const card = summary.closest(".case-card");
+    track("case_open", { case: card?.querySelector("h3")?.textContent || "" });
+  }
+
+  if (!link) {
+    return;
+  }
+
+  const href = link.href;
+  const label = link.textContent.trim();
+
+  if (href === clubUrl || href.includes("sbsite.pro/Expansio_best_1")) {
+    track("club_click", { label, href });
+    return;
+  }
+
+  if (link.closest(".source-links") || link.closest(".tool-steps")) {
+    track("source_click", { label, href });
+    return;
+  }
+
+  if (link.dataset.nav) {
+    track("nav_click", { label, target: link.getAttribute("href") });
+    return;
+  }
+
+  if (link.classList.contains("button")) {
+    track("cta_click", { label, href: link.getAttribute("href") || "" });
+  }
+});
+
 window.addEventListener("scroll", () => {
   updateProgress();
   setActiveNav();
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const depth = max > 0 ? Math.floor((window.scrollY / max) * 100) : 0;
+  const bucket = Math.min(100, Math.floor(depth / 25) * 25);
+  if (bucket > maxScrollDepth) {
+    maxScrollDepth = bucket;
+    track("scroll_depth", { depth: maxScrollDepth });
+  }
 }, { passive: true });
 
 renderCases();
@@ -278,3 +367,8 @@ renderGuide("frequency");
 setupReveal();
 updateProgress();
 setActiveNav();
+track("page_view", {
+  title: document.title,
+  width: window.innerWidth,
+  height: window.innerHeight
+});

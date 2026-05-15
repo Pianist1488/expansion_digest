@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expansio Digest Analytics</title>
+    <link rel="icon" href="/assets/avatar-logo-white.svg">
+    <link rel="stylesheet" href="/analytics.css">
+  </head>
+  <body>
+    <main class="analytics-shell">
+      <header class="analytics-header">
+        <div class="brandline">
+          <img src="/assets/avatar-logo-white.svg" alt="Expansio">
+          <div>
+            <p>Закрытая аналитика</p>
+            <h1>Expansio Digest #01</h1>
+          </div>
+        </div>
+        <label>
+          Период
+          <select id="periodSelect">
+            <option value="24 hours">24 часа</option>
+            <option value="7 days">7 дней</option>
+            <option value="30 days" selected>30 дней</option>
+            <option value="90 days">90 дней</option>
+          </select>
+        </label>
+      </header>
+
+      <section class="metric-grid" id="summaryGrid" aria-live="polite"></section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Динамика просмотров</h2>
+          <span>page_view по дням</span>
+        </div>
+        <div class="chart" id="dailyChart"></div>
+      </section>
+
+      <div class="columns">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Куда кликали</h2>
+            <span>CTA, источники, навигация</span>
+          </div>
+          <div class="table" id="clicksTable"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Дочитывание</h2>
+            <span>секции, увиденные пользователями</span>
+          </div>
+          <div class="table" id="sectionsTable"></div>
+        </section>
+      </div>
+
+      <div class="columns">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Источники трафика</h2>
+            <span>referrer</span>
+          </div>
+          <div class="table" id="referrersTable"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>События</h2>
+            <span>сырой счетчик событий</span>
+          </div>
+          <div class="table" id="eventsTable"></div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/analytics.js" type="module"></script>
+  </body>
+</html>
