@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="/switcher.js" defer></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expansio Digest #10</title>
+<script src="digest/image-slot.js"></script>
+<style>
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url('digest/fonts/Manrope-400-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url('digest/fonts/Manrope-400-cyrillic-ext.woff2') format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url('digest/fonts/Manrope-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122,U+2212;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:swap;src:url('digest/fonts/Manrope-500-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:swap;src:url('digest/fonts/Manrope-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122,U+2212;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:swap;src:url('digest/fonts/Manrope-600-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:swap;src:url('digest/fonts/Manrope-600-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122,U+2212;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:swap;src:url('digest/fonts/Manrope-700-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:swap;src:url('digest/fonts/Manrope-700-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122,U+2212;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:800;font-display:swap;src:url('digest/fonts/Manrope-800-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:800;font-display:swap;src:url('digest/fonts/Manrope-800-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122,U+2212;}
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:700;font-display:swap;src:url('digest/fonts/Unbounded-700-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:700;font-display:swap;src:url('digest/fonts/Unbounded-700-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122,U+2212;}
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:800;font-display:swap;src:url('digest/fonts/Unbounded-800-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:800;font-display:swap;src:url('digest/fonts/Unbounded-800-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122,U+2212;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('digest/fonts/PlexMono-500-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('digest/fonts/PlexMono-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+2122,U+2212;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:#EEF2F7;font-family:'Manrope',system-ui,sans-serif;color:#33445c;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+*{box-sizing:border-box;}
+a{color:#15745A;text-decoration:none;}
+a:hover{color:#22AC80;text-decoration:underline;text-underline-offset:2px;}
+p{margin:0 0 18px;}
+::selection{background:rgba(34,172,128,.22);}
+summary::-webkit-details-marker{display:none;}
+@media print{
+  .no-print{display:none !important;}
+  body{background:#fff;}
+  .card,.sec{break-inside:avoid;}
+}
+</style>
+</helmet>
+
+<div style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#22AC80,#1AA6B8);z-index:60;transition:width .1s linear;" ref="{{ progressRef }}" class="no-print"></div>
+
+<header class="no-print" style="position:sticky;top:0;z-index:50;background:rgba(238,242,247,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(16,28,44,.08);">
+  <div style="max-width:760px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:#14243a;text-decoration:none;">
+      <img src="digest/expansio-mark.svg" alt="Expansio" style="width:26px;height:26px;display:block;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#46566c;">Expansio · Дайджест</span>
+    </a>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.08em;color:#8A9BB0;white-space:nowrap;">{{ readTime }}</span>
+  </div>
+</header>
+
+<main id="top" style="max-width:760px;margin:0 auto;padding:0 20px 96px;">
+
+  <!-- ======= HERO ======= -->
+  <section style="padding:56px 0 40px;">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:28px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#15745A;background:rgba(34,172,128,.12);padding:6px 12px;border-radius:999px;white-space:nowrap;">Выпуск #10</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.05em;color:#8A9BB0;">13.07.2026</span>
+    </div>
+    <h1 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(28px,6.6vw,48px);line-height:1.1;letter-spacing:-0.02em;color:#14243a;margin:0 0 24px;text-wrap:balance;">Платформы меняют роли быстрее,<br><span style="background:linear-gradient(96deg,#22AC80,#1AA6B8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;">чем ты успеваешь адаптироваться</span></h1>
+    <p style="font-size:clamp(18px,2.4vw,21px);line-height:1.62;color:#46566c;font-weight:500;margin:0;max-width:60ch;">Wildberries, Ozon и Яндекс.Маркет приняли три разные роли в отношении рынка за одну неделю. Amazon впервые вывел рекламу через диалог за пределы своей платформы. Разница между «продавцом на маркетплейсе» и «продавцом, у которого маркетплейс — один из каналов» становится очевиднее с каждой неделей.</p>
+  </section>
+
+  <!-- ======= TL;DR ======= -->
+  <section class="sec" style="background:linear-gradient(160deg,#0E1825,#16263A);border-radius:24px;padding:clamp(24px,5vw,40px);margin-bottom:40px;box-shadow:0 20px 50px -28px rgba(14,24,37,.6);">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#5BD3AD;margin-bottom:20px;">TL;DR · за 30 секунд</div>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div style="display:flex;gap:16px;">
+        <div style="flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:rgba(91,211,173,.16);color:#5BD3AD;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;display:flex;align-items:center;justify-content:center;">01</div>
+        <div>
+          <div style="color:#fff;font-weight:700;font-size:17px;margin-bottom:6px;">Что произошло</div>
+          <p style="color:#B3C0D0;font-size:16px;line-height:1.62;margin:0;">В России WB, Ozon и ЯМ за неделю выступили одновременно как арендодатель, регулятор и партнёр государства. На глобальном рынке Amazon запустил Alexa+ Agentic Ads — первый рекламный формат, который ведёт покупателя от просмотра до покупки полностью внутри диалога, без клика.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <div style="flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:rgba(91,211,173,.16);color:#5BD3AD;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;display:flex;align-items:center;justify-content:center;">02</div>
+        <div>
+          <div style="color:#fff;font-weight:700;font-size:17px;margin-bottom:6px;">Что значит</div>
+          <p style="color:#B3C0D0;font-size:16px;line-height:1.62;margin:0;">Три разные логики поведения платформы происходят одновременно — продавец, для кого маркетплейс единственный канал, попадает в зависимость сразу от трёх сторон. На глобале AI-ассистенты становятся точкой открытия продукта: покупатель начинает с проблемы («лампа для детской»), а не с названия бренда.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <div style="flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:rgba(52,193,148,.9);color:#04241A;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;">→</div>
+        <div>
+          <div style="color:#fff;font-weight:700;font-size:17px;margin-bottom:6px;">Что сделать на этой неделе</div>
+          <p style="color:#B3C0D0;font-size:16px;line-height:1.62;margin:0;">Пересчитать юнит-экономику под новые комиссии WB/Ozon/ЯМ до 1 августа. Проверить готовность к обязательной регистрации маркированной косметики и бытовой химии на кассе с 1 июля. Начать думать о продукте не как о карточке, а как об ответе на задачу покупателя — шесть кейсов и один анти-кейс в выпуске.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TOC ======= -->
+  <nav class="sec no-print" style="margin-bottom:56px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#8A9BB0;margin-bottom:14px;">Оглавление</div>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <a href="#ev01" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">С.01</span><span style="font-weight:600;font-size:15px;">WB, Ozon, ЯМ — три роли за неделю</span></a>
+      <a href="#ev02" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">С.02</span><span style="font-weight:600;font-size:15px;">Amazon Alexa+ Agentic Ads</span></a>
+      <a href="#case1" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">К.01</span><span style="font-weight:600;font-size:15px;">Arrae · wellness</span></a>
+      <a href="#case2" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">К.02</span><span style="font-weight:600;font-size:15px;">Chamberlain Coffee · CPG</span></a>
+      <a href="#case3" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">К.03</span><span style="font-weight:600;font-size:15px;">Somethinc · beauty</span></a>
+      <a href="#case4" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">К.04</span><span style="font-weight:600;font-size:15px;">Brightland · оливковое масло</span></a>
+      <a href="#case5" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">К.05</span><span style="font-weight:600;font-size:15px;">GORGIE · energy drink</span></a>
+      <a href="#case6" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">К.06</span><span style="font-weight:600;font-size:15px;">Salt &amp; Stone · дезодорант</span></a>
+      <a href="#anti" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(229,86,75,.2);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;flex:0 0 auto;">А.01</span><span style="font-weight:600;font-size:15px;">Анти-кейс · Allbirds</span></a>
+      <a href="#services" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">П.01</span><span style="font-weight:600;font-size:15px;">Сервисы · Triple Whale + SellerFox</span></a>
+      <a href="#guide" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">П.02</span><span style="font-weight:600;font-size:15px;">Гайд · 5 вопросов о зависимости</span></a>
+      <a href="#legal" style="display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:#33445c;background:#fff;border:1px solid rgba(16,28,44,.07);"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;">Э.01</span><span style="font-weight:600;font-size:15px;">Эпилог · юридические риски D2C в США</span></a>
+    </div>
+  </nav>
+
+  <!-- ======= PART 1 ======= -->
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+    <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:13px;letter-spacing:.02em;color:#22AC80;">01</span>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(22px,4vw,30px);color:#14243a;margin:0;letter-spacing:-0.01em;">Часть 1 · События недели</h2>
+  </div>
+  <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(34,172,128,.08);border:1px solid rgba(34,172,128,.22);border-radius:16px;padding:18px 20px;margin:20px 0 44px;">
+    <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:34px;line-height:1;color:#15745A;flex:0 0 auto;">300+</div>
+    <p style="margin:0;font-size:15px;line-height:1.55;color:#46566c;">млн пользователей Amazon Alexa for Shopping в 2025 году, <b style="color:#14243a;">~$12 млрд</b> annualized sales, рост вовлечённости <b style="color:#14243a;">+400%</b> год к году. Одновременно три российских маркетплейса за одну неделю одновременно изменили правила игры.</p>
+  </div>
+
+  <!-- Event 01 -->
+  <section id="ev01" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:24px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#15745A;margin-bottom:12px;">Событие 01 · РФ</div>
+    <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(20px,3.4vw,26px);line-height:1.25;color:#14243a;margin:0 0 20px;">Три площадки, три роли — за одну неделю</h3>
+    <p style="font-size:18px;line-height:1.72;">С 1–7 июля 2026 Wildberries, Ozon и Яндекс.Маркет одновременно сделали три разных движения.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">WB · арендодатель с растущей ставкой</div>
+    <p style="font-size:18px;line-height:1.72;">С 7 июля повысил комиссии для 90% категорий: +20 п.п. на витринной модели, +6 п.п. на FBS, +5 п.п. на FBW. Причина — топливный кризис и рост логистических расходов. Изменения затронули <b style="color:#14243a;">6 576 категорий из 7 272</b>.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Ozon · полная перестройка тарифов</div>
+    <p style="font-size:18px;line-height:1.72;">Ozon переписал систему тарифов дважды за 2026 год. С 6 апреля — комиссию больше нельзя считать отдельно от логистики, максимальные ставки по ряду категорий подошли к 50–55%. С 1 июля — упрощение: с 6 до 3 ценовых диапазонов, все товары дороже 300 ₽ теперь в одном уровне. Льгота осталась только для товаров дешевле 300 ₽.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">ЯМ · комиссии +2–10%</div>
+    <p style="font-size:18px;line-height:1.72;">С 1 июля официального повышения не объявил, но по факту поднял комиссии по ряду категорий на 2–10%. Сниженный тариф расширили на новые категории, но убрали льготу за продажи с витрины.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">WB · партнёр государства</div>
+    <p style="font-size:18px;line-height:1.72;">Стал стратегическим партнёром РЭЦ по продвижению российских товаров за рубежом. В 2025 несырьевой экспорт РФ вырос на 9% (до 1,7 трлн ₽). Пилот в Узбекистане: продажи узбекских товаров на WB выросли в <b style="color:#14243a;">2,3×</b>, суммарно превысив <b style="color:#14243a;">$1,4 млрд</b>. В мае 2026 WB запустил тестирование экспорта в Китай через Wildberries Ecomday в Ханчжоу.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">WB · регулятор</div>
+    <p style="font-size:18px;line-height:1.72;">С 1 июля 2026 обязательна регистрация продаж маркированной косметики, бытовой химии и товаров личной гигиены на кассе (поштучный кассовый учёт) и передача данных в «Честный знак», плюс обязательный ЭДО в объёмно-сортовом формате. Разрешительный режим — с 01.04.2027.</p>
+
+    <p style="font-size:18px;line-height:1.72;font-family:'Manrope';font-weight:600;color:#14243a;margin-top:26px;">Что значит для селлера.</p>
+    <p style="font-size:18px;line-height:1.72;">Раньше маркетплейс был «одним каналом продаж» с понятными правилами. Три роли — три разных отношения к одному и тому же продавцу. Селлер, у которого маркетплейс единственный канал, попадает в тиски со всех сторон: тариф вырос, отчётность усложнилась, зависимость только увеличивается. Селлер с собственным брендом, органическим каналом и знанием клиента переживает изменения мягче — каждая из трёх ролей для него не критична.</p>
+
+    <details style="margin-top:20px;border-top:1px solid rgba(16,28,44,.09);padding-top:14px;">
+      <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#62748c;"><span>Источники · 5</span><span style="font-size:16px;">+</span></summary>
+      <ul style="list-style:none;padding:0;margin:16px 0 4px;display:flex;flex-direction:column;gap:12px;">
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">Uniseller.io</b> — WB тарифы (03.07.2026)<br><a href="https://uniseller.io/blog/wildberries-povyshaet-komissii-s-7-iyulya/" style="word-break:break-all;font-size:13px;">uniseller.io/blog/wildberries-povyshaet…</a></li>
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">Postavleno / ГуруСеллер</b> — Ozon тарифы<br><a href="https://postavleno.ru/blog/komissiya-ozon-dlya-prodavcov/" style="word-break:break-all;font-size:13px;">postavleno.ru/blog/komissiya-ozon…</a></li>
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">ГуруСеллер</b> — ЯМ комиссии<br><a href="https://guruseller.ru/new-coms-ymarket-1-07-2026/" style="word-break:break-all;font-size:13px;">guruseller.ru/new-coms-ymarket…</a></li>
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">CNews</b> — WB × РЭЦ (08.07.2026)<br><a href="https://www.cnews.ru/news/line/2026-07-08_rwb_rasshiryaet_vozmozhnosti" style="word-break:break-all;font-size:13px;">cnews.ru/news/line/2026-07-08…</a></li>
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">КонсультантПлюс</b> — «Честный знак»<br><a href="https://www.consultant.ru/document/cons_doc_LAW_519660/" style="word-break:break-all;font-size:13px;">consultant.ru/document/cons_doc_LAW_519660</a></li>
+      </ul>
+    </details>
+    <div style="display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>Уверенность: высокая</div>
+  </section>
+
+  <!-- Event 02 -->
+  <section id="ev02" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:64px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#15745A;margin-bottom:12px;">Событие 02 · Глобал</div>
+    <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(20px,3.4vw,26px);line-height:1.25;color:#14243a;margin:0 0 20px;">Amazon Alexa+ Agentic Ads — покупка через диалог</h3>
+    <p style="font-size:18px;line-height:1.72;">В июне 2026 на Cannes Lions Amazon представил Alexa+ Agentic Ads — первый рекламный формат, который проводит покупателя от просмотра рекламы до завершения покупки полностью внутри разговора, без единого клика и перехода на сайт. Формат в бете на Echo Show.</p>
+    <p style="font-size:18px;line-height:1.72;">Первые партнёры — Papa John's (заказ пиццы прямо в диалоге), Ticketmaster (билеты) и артисты Beck, Jill Scott, Omar Courtz. Amazon впервые вывел разговорную рекламу за пределы своей платформы: раньше покупатель мог купить только на Amazon, теперь — и у сторонних продавцов через тот же интерфейс.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0;">
+      <div style="background:#F4F7FA;border-radius:14px;padding:16px;"><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:26px;color:#14243a;line-height:1;">$12<span style="font-size:15px;color:#62748c;font-weight:700;"> млрд</span></div><div style="font-size:13px;color:#62748c;margin-top:6px;">annualized sales, +400% вовлечённость г/г</div></div>
+      <div style="background:#F4F7FA;border-radius:14px;padding:16px;"><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:26px;color:#14243a;line-height:1;">7 из 10</div><div style="font-size:13px;color:#62748c;margin-top:6px;">покупателей после клика — новые для бренда</div></div>
+      <div style="background:#F4F7FA;border-radius:14px;padding:16px;"><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:26px;color:#14243a;line-height:1;">–18/–16%</div><div style="font-size:13px;color:#62748c;margin-top:6px;">CPM / CPA c AI Ads Agent</div></div>
+    </div>
+
+    <p style="font-size:18px;line-height:1.72;">Параллельно Amazon Alexa for Shopping (переименован из Rufus 13 мая 2026) в 2025 году достиг 300+ млн пользователей, ~$12 млрд годовых продаж, +400% рост вовлечённости г/г. Почти 20% тех, кто взаимодействует с промтом, продолжают беседу с Alexa. Q1 2026 adoption Ads Agent — +82%.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Параллельные движения</div>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">ChatGPT.</b> OpenAI подтвердил тесты рекламы в январе 2026. В июне добавил ad generation, инструменты для аудиторий (first-party данные) и генерацию/локализацию креативов.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Google Smart Bidding.</b> В мае 2026 расширен на Performance Max и Shopping. Google заявляет +27% converting users в Search Campaigns.</span></li>
+    </ul>
+
+    <p style="font-size:18px;line-height:1.72;font-family:'Manrope';font-weight:600;color:#14243a;">Что значит.</p>
+    <p style="font-size:18px;line-height:1.72;">Точка старта покупки смещается с браузера на диалог. Покупатель не набирает «купить лампу для детской» в поиске — он говорит агенту: «мне нужна лампа в детскую, чтобы ребёнок хорошо спал», и агент сам находит, сравнивает, оформляет.</p>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Товар должен быть машиночитаем.</b> Название, описание, характеристики, отзывы, FAQ должны быть структурированы так, чтобы AI-агент понял, какую задачу решает продукт.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Бренд — ответ на задачу, а не карточка.</b> Если продукт не появляется в диалоге агента, его не существует для покупателя.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Ритейл-медиа усиливается.</b> Платформы вкладывают в AI-агентов и хотят монетизировать их через рекламу — бюджеты движутся туда.</span></li>
+    </ul>
+
+    <details style="margin-top:20px;border-top:1px solid rgba(16,28,44,.09);padding-top:14px;">
+      <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#62748c;"><span>Источники · 5</span><span style="font-size:16px;">+</span></summary>
+      <ul style="list-style:none;padding:0;margin:16px 0 4px;display:flex;flex-direction:column;gap:12px;">
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">Amazon Ads</b> — Alexa+ Agentic Ads (июнь 2026)<br><a href="https://advertising.amazon.com/library/news/alexa-agentic-ads" style="word-break:break-all;font-size:13px;">advertising.amazon.com/library/news/alexa-agentic-ads</a></li>
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">Amazon Ads</b> — Cannes Lions 2026<br><a href="https://advertising.amazon.com/library/news/cannes-lions-2026-news-advertising" style="word-break:break-all;font-size:13px;">advertising.amazon.com/library/news/cannes-lions-2026…</a></li>
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">Digiday</b> — разбор формата<br><a href="https://digiday.com/marketing/amazons-latest-ad-format-offers-a-glimpse-of-advertisings-agentic-future/" style="word-break:break-all;font-size:13px;">digiday.com/marketing/amazons-latest-ad-format…</a></li>
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">CNBC</b> — Amazon ditches Rufus (13.05.2026)<br><a href="https://www.cnbc.com/2026/05/13/amazon-ditches-rufus-ai-chatbot-in-favor-of-alexa-shopping-agent.html" style="word-break:break-all;font-size:13px;">cnbc.com/2026/05/13/amazon-ditches-rufus…</a></li>
+        <li style="font-size:14px;line-height:1.5;"><b style="color:#14243a;">MediaPost</b> — ChatGPT ad features (07.2026)<br><a href="https://www.mediapost.com/publications/article/416345/" style="word-break:break-all;font-size:13px;">mediapost.com/publications/article/416345</a></li>
+      </ul>
+    </details>
+    <div style="display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>Уверенность: высокая</div>
+  </section>
+
+  <!-- ======= PART 2 ======= -->
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+    <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:13px;letter-spacing:.02em;color:#22AC80;">02</span>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(22px,4vw,30px);color:#14243a;margin:0;letter-spacing:-0.01em;">Часть 2 · Кейсы недели</h2>
+  </div>
+  <div style="display:flex;gap:18px;align-items:center;background:linear-gradient(135deg,#0E1825,#16263A);border-radius:18px;padding:22px 24px;margin:20px 0 20px;">
+    <div style="flex:0 0 auto;text-align:center;"><div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:38px;line-height:1;color:#5BD3AD;">$165М</div></div>
+    <p style="margin:0;font-size:15px;line-height:1.55;color:#B3C0D0;">Salt &amp; Stone — выручка в 2025, при этом бренд не ставил фокусом виральность в TikTok, создатели контента сами их нашли. Одно видео Alexa Collins — <b style="color:#fff;">13,8 млн просмотров</b> без бюджета.</p>
+  </div>
+  <p style="font-size:18px;line-height:1.72;margin-bottom:44px;">Шесть брендов, которые построили продукт как ответ на задачу покупателя, а не как карточку на маркетплейсе. Один анти-кейс — что бывает, когда бренд теряет способность отвечать на задачу и оказывается в позиции «карточки».</p>
+
+  <!-- Case 1 · Arrae -->
+  <section id="case1" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:24px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="display:flex;gap:18px;align-items:center;margin-bottom:22px;">
+      <div style="flex:0 0 auto;width:88px;height:88px;border-radius:18px;overflow:hidden;border:1px solid rgba(16,28,44,.1);background:#F4F7FA;"><image-slot id="logo-arrae" shape="rounded" radius="18" placeholder="Логотип"></image-slot></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:4px;">Кейс 01 · wellness</div><h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(21px,3.6vw,27px);color:#14243a;margin:0;line-height:1.15;">Arrae</h3></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">США / Канада</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">$100M+ выручки</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">старт из квартиры 37 м²</span>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin-bottom:8px;">Что за бренд</div>
+    <p style="font-size:18px;line-height:1.72;">Arrae, США/Канада. Основан в марте 2020 мужем и женой Nish Samantray и Siff Haider. Первые продукты — Bloat (пищеварение) и Calm (сон/тревога). Стартовали из квартиры 37 м² в Торонто, вложили свадебные деньги.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Переломный момент</div>
+    <p style="font-size:18px;line-height:1.72;">Конец 2020 года. За первые 9 месяцев бренд сделал более $1 млн выручки. Дальше — методичная работа над продуктовой линейкой, DTC-сайтом, Amazon и ритейлом.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Модель в одном абзаце</div>
+    <p style="font-size:18px;line-height:1.72;">Arrae решает конкретные женские проблемы (вздутие, тревога, гормональный баланс) через натуральные добавки. Ставка — не на «универсальный витамин», а на узкие продукты под конкретный симптом. Каждый SKU — «Bloat», «Calm», «Balance» — сам себе категория. Клиент приходит с проблемой, а не за витамином.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Цифры</div>
+    <p style="font-size:18px;line-height:1.72;">Выручка в 2026 — более <b style="color:#14243a;">$100 млн</b>. На TikTok Shop бренд достиг $1,5 млн в месяц (из них $1 млн за одну неделю), но команда осознанно отказалась удваивать ставку на TikTok Shop: маржа небольшая, средний чек низкий, лояльности нет. Перешли на DTC + Amazon + ритейл. С 2024 — Target, с августа 2025 — Sprouts (топ-1 women's supplement в центре инноваций).</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 10px;">Что уникального</div>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Продукт как ответ на симптом,</b> не как категория. Клиент ищет решение, не бренд.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Отказ от каналов, которые не строят LTV.</b> TikTok Shop давал выручку, но не давал клиентов — переключились на каналы с retention.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Основатели в кадре.</b> Siff Haider ведёт подкаст, лично отвечает на вопросы аудитории.</span></li>
+    </ul>
+
+    <div style="background:rgba(34,172,128,.07);border-radius:14px;padding:18px 20px;margin-top:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:8px;">Адаптация на WB / Ozon / РФ</div>
+      <p style="font-size:16px;line-height:1.62;margin:0;color:#46566c;"><b style="color:#14243a;">Высокая.</b> Категория БАДов и wellness на WB растёт, но большинство продавцов позиционируются как «универсальный витамин». Модель: узкий SKU + название под задачу + основатель в кадре.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(16,28,44,.09);">
+      <div style="font-size:14px;color:#62748c;">Открыть: <a href="https://arrae.com">arrae.com</a> · Instagram* @arrae</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>высокая</div>
+    </div>
+  </section>
+
+  <!-- Case 2 · Chamberlain Coffee -->
+  <section id="case2" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:24px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="display:flex;gap:18px;align-items:center;margin-bottom:22px;">
+      <div style="flex:0 0 auto;width:88px;height:88px;border-radius:18px;overflow:hidden;border:1px solid rgba(16,28,44,.1);background:#F4F7FA;"><image-slot id="logo-chamberlain" shape="rounded" radius="18" placeholder="Логотип"><img src="./-2026-07-13-20-39-46-mrjic6sg.png" alt="-2026-07-13-20-39-46" style="max-width: 100%; height: auto; display: block; object-fit: cover"></image-slot></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:4px;">Кейс 02 · CPG / coffee</div><h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(21px,3.6vw,27px);color:#14243a;margin:0;line-height:1.15;">Chamberlain Coffee</h3></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">США</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">$33M выручки (прогноз 2025)</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">10K+ ритейл-точек</span>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin-bottom:8px;">Что за бренд</div>
+    <p style="font-size:18px;line-height:1.72;">Chamberlain Coffee, США. Основан Emma Chamberlain (YouTube-звезда, 12M+ подписчиков) в 2019. Категория — кофе premium: молотый, зерновой, cold brew, chai, matcha и RTD-напитки в банках.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Переломный момент</div>
+    <p style="font-size:18px;line-height:1.72;">2023 год, запуск RTD-линейки. В апреле 2023 бренд запустил cold brew в банках эксклюзивно в Walmart. Первая версия имела проблемы (осадок, консистенция), поэтому в декабре 2023 перезапустились на овсяном молоке. Дальше — активный ритейл-рост.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Модель в одном абзаце</div>
+    <p style="font-size:18px;line-height:1.72;">Chamberlain Coffee — про личность как канал дистрибуции. Emma — сооснователь и CEO, стоит в кафе, снимается с продуктом, обсуждает вкус, ошибки, планы. Клиент покупает не «кофе Chamberlain» — он покупает продолжение отношений со звездой.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Цифры</div>
+    <p style="font-size:18px;line-height:1.72;">Выручка ~$22 млн в 2024, прогноз <b style="color:#14243a;">$33 млн в 2025</b> (+53% г/г). 10 000+ ритейл-точек: Walmart, Target, Costco, Whole Foods, Albertsons, Sprouts, Erewhon, Amazon. Первое кафе в Century City LA открыто в январе 2025: 30 000+ заказов в первые дни.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 10px;">Что уникального</div>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Основательница — сооснователь и CEO,</b> не «лицо бренда».</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Ритейл-first.</b> Рост через полки Walmart и Target, не через собственный сайт — редкость для брендов с участием селебрити.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Категория растёт вширь.</b> Кофе → chai → matcha → кафе → RTD, каждое расширение усиливает основной бренд.</span></li>
+    </ul>
+
+    <div style="background:rgba(34,172,128,.07);border-radius:14px;padding:18px 20px;margin-top:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:8px;">Адаптация на WB / Ozon / РФ</div>
+      <p style="font-size:16px;line-height:1.62;margin:0;color:#46566c;"><b style="color:#14243a;">Средняя.</b> В РФ CPG-бренды на основе публичных персон — редкость, но потенциал высокий: много инфлюенсеров с аудиторией 100K–1M, которые могли бы запустить продукт с реальным управлением, а не по лицензионной модели.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(16,28,44,.09);">
+      <div style="font-size:14px;color:#62748c;">Открыть: <a href="https://chamberlaincoffee.com">chamberlaincoffee.com</a> · Instagram* @chamberlaincoffee</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>высокая</div>
+    </div>
+  </section>
+
+  <!-- Case 3 · Somethinc -->
+  <section id="case3" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:24px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="display:flex;gap:18px;align-items:center;margin-bottom:22px;">
+      <div style="flex:0 0 auto;width:88px;height:88px;border-radius:18px;overflow:hidden;border:1px solid rgba(16,28,44,.1);background:#F4F7FA;"><image-slot id="logo-somethinc" shape="rounded" radius="18" placeholder="Логотип"></image-slot></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:4px;">Кейс 03 · beauty</div><h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(21px,3.6vw,27px);color:#14243a;margin:0;line-height:1.15;">Somethinc</h3></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">Индонезия</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">50%+ доли рынка</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">старт с 3 сывороток</span>
+    </div>
+
+    <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(224,165,46,.12);border:1px solid rgba(224,165,46,.34);border-radius:12px;padding:14px 16px;margin-bottom:22px;">
+      <span style="flex:0 0 auto;font-size:16px;">⚠</span>
+      <p style="margin:0;font-size:15px;line-height:1.55;color:#7a5a12;">Индонезия — рынок с другими правилами: население 275 млн, beauty-рынок $10,55 млрд в 2026 (Statista), второй по темпам роста в Юго-Восточной Азии.</p>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin-bottom:8px;">Что за бренд</div>
+    <p style="font-size:18px;line-height:1.72;">Somethinc, Индонезия. Основан в 2019 в Западной Джакарте. Категория — уход за кожей, макияж, уход за телом и волосами.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Переломный момент</div>
+    <p style="font-size:18px;line-height:1.72;">2023 год. Somethinc стал #1 local brand на TikTok в Q1 2023 и одновременно вышел в топ Shopee по категории сывороток. За 4 года расширился с 3 сывороток до 200+ SKU.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Модель в одном абзаце</div>
+    <p style="font-size:18px;line-height:1.72;">Пока L'Oréal и Estée Lauder приходили в Индонезию с адаптированными западными продуктами, Somethinc делал то же самое, но быстрее (цикл производства — недели, не квартал), с учётом местного климата, кожи, цен, и с полностью индонезийским лицом бренда.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Цифры</div>
+    <p style="font-size:18px;line-height:1.72;">Привлечено <b style="color:#14243a;">$12 млн</b> (Prosus Ventures, Peak XV Partners, Sequoia Capital). Заявленная <b style="color:#14243a;">50%+ доля</b> на местном рынке в своей категории. За первые 2 года — +15% доли рынка.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 10px;">Что уникального</div>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Локальность как основа,</b> не адаптация международного продукта.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Скорость выхода SKU</b> — недели, не месяцы. Позволяет ловить тренды в моменте.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Инвестор — Sequoia + Prosus.</b> Редкий кейс для местного beauty-бренда.</span></li>
+    </ul>
+
+    <div style="background:rgba(34,172,128,.07);border-radius:14px;padding:18px 20px;margin-top:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:8px;">Адаптация на WB / Ozon / РФ</div>
+      <p style="font-size:16px;line-height:1.62;margin:0;color:#46566c;"><b style="color:#14243a;">Прямая.</b> Российский beauty-рынок ~$10 млрд, растёт. Модель Somethinc — шаблон для DTC-брендов, которые хотят стать местным лидером до прихода/возвращения западных игроков.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(16,28,44,.09);">
+      <div style="font-size:14px;color:#62748c;">Открыть: <a href="https://somethinc.com">somethinc.com</a> · Instagram* @somethincofficial</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>высокая (market share по данным бренда)</div>
+    </div>
+  </section>
+
+  <!-- Case 4 · Brightland -->
+  <section id="case4" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:24px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="display:flex;gap:18px;align-items:center;margin-bottom:22px;">
+      <div style="flex:0 0 auto;width:88px;height:88px;border-radius:18px;overflow:hidden;border:1px solid rgba(16,28,44,.1);background:#F4F7FA;"><image-slot id="logo-brightland" shape="rounded" radius="18" placeholder="Логотип"></image-slot></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:4px;">Кейс 04 · food / gifting</div><h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(21px,3.6vw,27px);color:#14243a;margin:0;line-height:1.15;">Brightland</h3></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">США</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">$40 за бутылку</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">Whole Foods 125+ точек</span>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin-bottom:8px;">Что за бренд</div>
+    <p style="font-size:18px;line-height:1.72;">Brightland, США. Основан в 2018 Aishwarya Iyer (ранее — PR-специалист). Категория — премиум оливковое масло из Калифорнии, дальше уксусы, соусы, приправы. Фишка — стеклянные бутылки в цветах-баблгам на видном месте на кухне.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Переломный момент</div>
+    <p style="font-size:18px;line-height:1.72;">Август 2024. Brightland вошёл в 125+ магазинов Whole Foods с одновременным запуском «everyday» линейки по $20 — вдвое дешевле классического продукта.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Модель в одном абзаце</div>
+    <p style="font-size:18px;line-height:1.72;">Brightland превращает банальную категорию (оливковое масло) в категорию подарков и статуса. Бутылка стоит $40 — x4 к рыночной норме. Ставка не на цену, а на визуальное удовольствие и упаковку как объект в интерьере. Iyer прямо ссылается на Ralph Lauren: превратить обычный продукт в люксовый через дизайн, историю и ценник.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Цифры</div>
+    <p style="font-size:18px;line-height:1.72;">Iyer вложила $30K собственных на старте. В 2022 привлекли $6,83 млн, осенью 2024 — Series A $15 млн. Выручка — <b style="color:#14243a;">$50–70 млн</b> (mid-eight figures по оценке Fortune), большая часть — через подарки. Whole Foods, Amazon, Nordstrom.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 10px;">Что уникального</div>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Категория-переключатель.</b> Оливковое масло превращено в подарок и объект в интерьере.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Дизайн бутылки как продукт.</b> Люди фотографируют и постят.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Ритейл-стратегия «шаг за шагом».</b> Не гнались за массовым Walmart сразу, шли через premium-каналы.</span></li>
+    </ul>
+
+    <div style="background:rgba(34,172,128,.07);border-radius:14px;padding:18px 20px;margin-top:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:8px;">Адаптация на WB / Ozon / РФ</div>
+      <p style="font-size:16px;line-height:1.62;margin:0;color:#46566c;"><b style="color:#14243a;">Высокая.</b> Рынок premium-масел, приправ, специй практически не занят DTC-брендами. Модель: премиум-упаковка + собственный сайт + ритейл через Азбуку Вкуса, Магнит Косметик, Золотое Яблоко.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(16,28,44,.09);">
+      <div style="font-size:14px;color:#62748c;">Открыть: <a href="https://brightland.co">brightland.co</a> · Instagram* @brightland</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>высокая</div>
+    </div>
+  </section>
+
+  <!-- Case 5 · GORGIE -->
+  <section id="case5" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:24px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="display:flex;gap:18px;align-items:center;margin-bottom:22px;">
+      <div style="flex:0 0 auto;width:88px;height:88px;border-radius:18px;overflow:hidden;border:1px solid rgba(16,28,44,.1);background:#F4F7FA;"><image-slot id="logo-gorgie" shape="rounded" radius="18" placeholder="Логотип"></image-slot></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:4px;">Кейс 05 · energy drink</div><h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(21px,3.6vw,27px);color:#14243a;margin:0;line-height:1.15;">GORGIE</h3></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">США</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">+600% ритейл г/г</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">1900+ Target-точек</span>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin-bottom:8px;">Что за бренд</div>
+    <p style="font-size:18px;line-height:1.72;">GORGIE, США. Основан в 2023 Michelle Cordeiro Grant, которая ранее построила бренд нижнего белья Lively и продала его Wacoal в 2019. Категория — healthy energy drink: 5 вкусов, розовый/зелёный/фиолетовый дизайн, ноль сахара, витамины B и L-теанин.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Переломный момент</div>
+    <p style="font-size:18px;line-height:1.72;">Июнь 2025. Бренд вошёл в 1 900+ магазинов Target с эксклюзивным вкусом Pink Lemonade — переход из «нишевого DTC» в «массовый ритейл».</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Модель в одном абзаце</div>
+    <p style="font-size:18px;line-height:1.72;">GORGIE — это «энергетик как fashion», Michelle называет стратегию так буквально. Ставка не на продукт (энергетиков сотни), а на дизайн банки, цветовую палитру, готовность к фото и место в повседневном гардеробе. Виральные моменты — через дизайн, который люди сами хотят снять, не через бюджет.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Цифры</div>
+    <p style="font-size:18px;line-height:1.72;">Ритейл-продажи <b style="color:#14243a;">+600% г/г</b> в 2026. #1 fastest-growing energy brand в US natural channel в 2024. 1,6 млрд органических social impressions. $24,5 млн Series A в апреле 2025 (Notable Capital), суммарно привлечено $37 млн. Присутствие: Kroger, Sprouts, Albertsons, HEB, Whole Foods, Erewhon, Target (1 900+).</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 10px;">Что уникального</div>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Дизайн как основной актив.</b> Банка = визуальный объект, который снимают просто потому, что красиво.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Виральные моменты вместо бюджета.</b> 1,6 млрд impressions — «люди сами сняли», а не «мы купили».</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Ритейл-first, но правильно.</b> Правильный ритейл-партнёр (Target, Whole Foods) с прицелом на wellness-аудиторию.</span></li>
+    </ul>
+
+    <div style="background:rgba(34,172,128,.07);border-radius:14px;padding:18px 20px;margin-top:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:8px;">Адаптация на WB / Ozon / РФ</div>
+      <p style="font-size:16px;line-height:1.62;margin:0;color:#46566c;"><b style="color:#14243a;">Средняя.</b> Рынок здоровых энергетиков в РФ практически пуст (Adrenalin/Redbull доминируют) — есть окно для локального бренда с сильным дизайном и wellness-позиционированием.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(16,28,44,.09);">
+      <div style="font-size:14px;color:#62748c;">Открыть: <a href="https://drinkgorgie.com">drinkgorgie.com</a> · Instagram* @drinkgorgie</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>высокая</div>
+    </div>
+  </section>
+
+  <!-- Case 6 · Salt & Stone -->
+  <section id="case6" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:64px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="display:flex;gap:18px;align-items:center;margin-bottom:22px;">
+      <div style="flex:0 0 auto;width:88px;height:88px;border-radius:18px;overflow:hidden;border:1px solid rgba(16,28,44,.1);background:#F4F7FA;"><image-slot id="logo-saltstone" shape="rounded" radius="18" placeholder="Логотип"><img src="./-2026-07-13-20-42-47-mrjig055.png" alt="-2026-07-13-20-42-47" style="max-width: 100%; height: auto; display: block; object-fit: cover"></image-slot></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:4px;">Кейс 06 · personal care</div><h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(21px,3.6vw,27px);color:#14243a;margin:0;line-height:1.15;">Salt &amp; Stone</h3></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">Лос-Анджелес</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">$165M выручки в 2025</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:5px 11px;border-radius:999px;">дезодорант $20</span>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin-bottom:8px;">Что за бренд</div>
+    <p style="font-size:18px;line-height:1.72;">Salt &amp; Stone, Лос-Анджелес. Основан в 2017 Nima Jalali (бывший профессиональный сноубордист). Категория — натуральные дезодоранты, солнцезащитные средства, парфюм, уход за кожей. Ключевой продукт — дезодорант $20, продаётся по штуке каждые 7 секунд.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Переломный момент</div>
+    <p style="font-size:18px;line-height:1.72;">2023 год, виральный момент на TikTok. Инфлюенсер Alexa Collins сняла обзор дезодоранта — видео набрало <b style="color:#14243a;">13,8 млн просмотров</b> без единого доллара рекламы. Продажи выросли скачком, началась экспансия в ритейл.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Модель в одном абзаце</div>
+    <p style="font-size:18px;line-height:1.72;">Редкий пример, где создатели контента сами нашли продукт. Jalali прямо говорит: «Мы не гонялись за виральностью, TikTok нас нашёл». Продукт настолько хорош по формуле, упаковке и цене, что органические обзоры полились сами. Ставка — не на маркетинг, а на экспертизу основателя (20+ лет в бодикере) и продукт, который хочется рекомендовать.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Цифры</div>
+    <p style="font-size:18px;line-height:1.72;">В 2025 году бренд достиг <b style="color:#14243a;">$165 млн выручки</b>, продолжая расти в 2026-м. 1 700+ магазинов в 40 странах (Sephora, Ulta, Amazon, Erewhon — #1 в трёх из них). Трёхзначный рост г/г. На TikTok у самого бренда всего 30,5K подписчиков, но виральных обзоров — тысячи. В начале 2026 коллаба с 818 Tequila Kendall Jenner под Coachella — мгновенно раскупили.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 10px;">Что уникального</div>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Продукт настолько хорош,</b> что создатели контента снимают его сами — премиум-качество + доступная цена + виральный wow-момент.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Основатель — эксперт в категории,</b> знает формулы, ингредиенты, производство.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Коллабы с правильным партнёром.</b> 818 Tequila усиливает бренд, не разбавляет.</span></li>
+    </ul>
+
+    <div style="background:rgba(34,172,128,.07);border-radius:14px;padding:18px 20px;margin-top:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#15745A;margin-bottom:8px;">Адаптация на WB / Ozon / РФ</div>
+      <p style="font-size:16px;line-height:1.62;margin:0;color:#46566c;"><b style="color:#14243a;">Высокая.</b> Натуральные дезодоранты и парфюмерия — быстрорастущие категории в РФ. Модель: премиум-качество, средняя цена (2 000–3 000 ₽), фокус на формуле и упаковке, минимум рекламы.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(16,28,44,.09);">
+      <div style="font-size:14px;color:#62748c;">Открыть: <a href="https://saltandstone.com">saltandstone.com</a> · Instagram* @saltandstoneco</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>высокая</div>
+    </div>
+  </section>
+
+  <!-- ======= ANTI-CASE ======= -->
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+    <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:13px;letter-spacing:.02em;color:#E5564B;">!</span>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(22px,4vw,30px);color:#14243a;margin:0;letter-spacing:-0.01em;">Анти-кейс</h2>
+  </div>
+
+  <section id="anti" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(229,86,75,.3);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:64px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(229,86,75,.28);">
+    <div style="display:flex;gap:18px;align-items:center;margin-bottom:22px;">
+      <div style="flex:0 0 auto;width:88px;height:88px;border-radius:18px;overflow:hidden;border:1px solid rgba(16,28,44,.1);background:#F4F7FA;"><image-slot id="logo-allbirds" shape="rounded" radius="18" placeholder="Логотип"></image-slot></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C8392E;margin-bottom:4px;">Анти-кейс · footwear</div><h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(21px,3.6vw,27px);color:#14243a;margin:0;line-height:1.15;">Allbirds</h3></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;background:rgba(229,86,75,.1);border:1px solid rgba(229,86,75,.28);padding:5px 11px;border-radius:999px;">IPO $4,1 млрд → продажа $39М</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;background:rgba(229,86,75,.1);border:1px solid rgba(229,86,75,.28);padding:5px 11px;border-radius:999px;">Q1 2026: выручка −23,3%</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;background:rgba(229,86,75,.1);border:1px solid rgba(229,86,75,.28);padding:5px 11px;border-radius:999px;">2 CEO за 1 год</span>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin-bottom:8px;">Что за бренд</div>
+    <p style="font-size:18px;line-height:1.72;">Allbirds (США). Основан в 2016. Категория — экологичные кроссовки из шерсти мериноса и других натуральных материалов.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 12px;">Что произошло · траектория</div>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:0;border-left:2px solid rgba(229,86,75,.25);">
+      <li style="display:flex;gap:14px;padding:0 0 16px 18px;position:relative;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;flex:0 0 84px;">2016–20</span><span style="font-size:16px;line-height:1.5;color:#46566c;">Бурный рост, статус эко-звезды.</span></li>
+      <li style="display:flex;gap:14px;padding:0 0 16px 18px;position:relative;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;flex:0 0 84px;">11.2021</span><span style="font-size:16px;line-height:1.5;color:#46566c;">IPO по $15/акция, valuation $4,1 млрд. Разгар хайпа вокруг эко-товаров.</span></li>
+      <li style="display:flex;gap:14px;padding:0 0 16px 18px;position:relative;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;flex:0 0 84px;">2022–24</span><span style="font-size:16px;line-height:1.5;color:#46566c;">Попытки расширения (одежда, спорт), рост CAC, снижение органики. Совет директоров сменил CEO дважды за год.</span></li>
+      <li style="display:flex;gap:14px;padding:0 0 16px 18px;position:relative;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;flex:0 0 84px;">Q1 2026</span><span style="font-size:16px;line-height:1.5;color:#46566c;">Net revenue −23,3% г/г. US store revenue −20% г/г.</span></li>
+      <li style="display:flex;gap:14px;padding:0 0 16px 18px;position:relative;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;flex:0 0 84px;">02.2026</span><span style="font-size:16px;line-height:1.5;color:#46566c;">Закрытие всех full-price магазинов в США. Осталось 2 аутлета в США + 2 в Великобритании.</span></li>
+      <li style="display:flex;gap:14px;padding:0 0 0 18px;position:relative;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C8392E;flex:0 0 84px;">29.03.2026</span><span style="font-size:16px;line-height:1.5;color:#46566c;">Asset Purchase Agreement с American Exchange Group на $39 млн — 1/100 от valuation IPO 2021 года.</span></li>
+    </ul>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 8px;">Что значит</div>
+    <p style="font-size:18px;line-height:1.72;">Allbirds строил бренд на волне моды 2016–2020: кроссовки из шерсти были «продуктом-манифестом» — покупая, ты присоединяешься к движению. Когда хайп угас, Allbirds не смог найти новую точку смысла для покупателя:</p>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:10px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.5;"><span style="color:#E5564B;font-weight:800;flex:0 0 auto;">×</span><span>Категория «эко-кроссовки» перестала быть уникальной — все крупные бренды выпустили свои эко-линейки.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.5;"><span style="color:#E5564B;font-weight:800;flex:0 0 auto;">×</span><span>Репутация обесценилась — покупатель не платил премию за «шерсть мериноса», когда рядом были аналогичные модели.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.5;"><span style="color:#E5564B;font-weight:800;flex:0 0 auto;">×</span><span>Попытки расширения (одежда, спорт) не сработали, базовый продукт стал слабее.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.5;"><span style="color:#E5564B;font-weight:800;flex:0 0 auto;">×</span><span>Три канала без органического актива: Meta-трафик, флагманские магазины, VC-деньги на скорость роста — ни один не строил актив на новых платформах.</span></li>
+    </ul>
+
+    <div style="background:rgba(229,86,75,.07);border:1px solid rgba(229,86,75,.2);border-radius:14px;padding:18px 20px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C8392E;margin-bottom:12px;">Чему учит</div>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+        <li style="display:flex;gap:12px;font-size:16px;line-height:1.55;color:#46566c;"><span style="color:#C8392E;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">«Продукт-манифест» устаревает.</b> Если продукт — часть движения, а движение угасает, вы теряете покупателя.</span></li>
+        <li style="display:flex;gap:12px;font-size:16px;line-height:1.55;color:#46566c;"><span style="color:#C8392E;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Категория без структурного преимущества — дом на песке.</b> Материал средний аргумент, если конкуренты повторят его за 6 месяцев.</span></li>
+        <li style="display:flex;gap:12px;font-size:16px;line-height:1.55;color:#46566c;"><span style="color:#C8392E;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Продажа за 1/100 IPO — не про рынок, это про модель.</b> Модель Allbirds перестала генерировать outcomes задолго до 2026 года.</span></li>
+      </ul>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(16,28,44,.09);">
+      <div style="font-size:14px;color:#62748c;">Где применимо в РФ: любой бренд с сильной «eco/health/sustainability» позицией без структурного преимущества, или бренд, чей рост держался на одной волне тренда, но не подстроен под смену интереса аудитории.</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;flex:0 0 auto;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>высокая</div>
+    </div>
+  </section>
+
+  <!-- ======= PART 3 ======= -->
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+    <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:13px;letter-spacing:.02em;color:#22AC80;">03</span>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(22px,4vw,30px);color:#14243a;margin:0;letter-spacing:-0.01em;">Часть 3 · Прикладное</h2>
+  </div>
+  <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(34,172,128,.08);border:1px solid rgba(34,172,128,.22);border-radius:16px;padding:18px 20px;margin:20px 0 44px;">
+    <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:34px;line-height:1;color:#15745A;flex:0 0 auto;">38K</div>
+    <p style="margin:0;font-size:15px;line-height:1.55;color:#46566c;">товарных позиций в базе SellerFox по 6 российским маркетплейсам одновременно. Triple Whale обрабатывает 9+ млрд событий трекинга в день на global DTC. Оба сервиса — про то, чтобы видеть картину бизнеса раньше, чем платформа изменит правила.</p>
+  </div>
+
+  <!-- Services -->
+  <section id="services" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin-bottom:24px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#15745A;margin-bottom:12px;">Сервис недели</div>
+    <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(20px,3.4vw,26px);line-height:1.25;color:#14243a;margin:0 0 24px;">Triple Whale + SellerFox — видимость раньше, чем платформа изменит правила</h3>
+
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+      <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:15px;color:#14243a;">Triple Whale</div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#46566c;background:#F4F7FA;border:1px solid rgba(16,28,44,.08);padding:4px 10px;border-radius:999px;">AI OS для DTC · global</span>
+    </div>
+    <p style="font-size:18px;line-height:1.72;">AI-платформа для e-commerce, изначально ориентированная на Shopify. Собирает данные из ad-аккаунтов, магазина, инструментов автоматизации, накладывает свой first-party пиксель (Triple Pixel) и добавляет AI-ассистента (Moby 2). Стандарт среди DTC-брендов с высокой долей платной рекламы.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:6px 0 18px;">
+      <div style="display:flex;gap:10px;font-size:15px;line-height:1.45;color:#46566c;"><span style="color:#22AC80;">•</span>Triple Pixel — 9+ млрд событий в день</div>
+      <div style="display:flex;gap:10px;font-size:15px;line-height:1.45;color:#46566c;"><span style="color:#22AC80;">•</span>Moby 2 — AI-ассистент по кампаниям</div>
+      <div style="display:flex;gap:10px;font-size:15px;line-height:1.45;color:#46566c;"><span style="color:#22AC80;">•</span>Compass — MTA + MMM + incrementality</div>
+      <div style="display:flex;gap:10px;font-size:15px;line-height:1.45;color:#46566c;"><span style="color:#22AC80;">•</span>Дашборды и атрибуция по всем каналам</div>
+    </div>
+    <p style="font-size:16px;line-height:1.6;color:#46566c;"><b style="color:#14243a;">Цена.</b> Free $0. Foundation $219/мес. Automate $749/мес. Enterprise custom. Реальная цена зависит от GMV: $5–7M GMV — ~$1 129/мес, $10–15M GMV — ~$1 849/мес.</p>
+    <p style="font-size:16px;line-height:1.6;color:#46566c;"><b style="color:#14243a;">Кому подходит.</b> DTC-брендам с оборотом $1M–$50M и рекламным бюджетом $25K+/мес через 2–3 канала.</p>
+    <p style="font-size:16px;line-height:1.6;color:#46566c;"><b style="color:#14243a;">Зачем тестировать на неделе.</b> Если у вас несколько каналов рекламы и решения по бюджету на глаз — за 2 недели покажет, какой канал реально приносит выручку, а какой арендует её у Meta и Google.</p>
+    <div style="font-size:14px;color:#62748c;margin-bottom:26px;">Открыть: <a href="https://triplewhale.com">triplewhale.com</a></div>
+
+    <div style="height:1px;background:rgba(16,28,44,.09);margin-bottom:26px;"></div>
+
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+      <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:15px;color:#14243a;">SellerFox</div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0F7280;background:rgba(19,141,156,.1);border:1px solid rgba(19,141,156,.28);padding:4px 10px;border-radius:999px;">Российский аналог · WB / Ozon / ЯМ</span>
+    </div>
+    <p style="font-size:18px;line-height:1.72;">Российский сервис аналитики маркетплейсов. Покрывает WB, Ozon, Яндекс Маркет, Мегамаркет, AliExpress, Магнит Маркет. Встроен AI: автоответы на комментарии, генерация фото/видео для карточек. База — 38 000 товарных позиций, обновление ежедневно, история с 2020 года.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:6px 0 18px;">
+      <div style="display:flex;gap:10px;font-size:15px;line-height:1.45;color:#46566c;"><span style="color:#138D9C;">•</span>Топ-продажи и динамика в категории</div>
+      <div style="display:flex;gap:10px;font-size:15px;line-height:1.45;color:#46566c;"><span style="color:#138D9C;">•</span>AI-автоответы на отзывы</div>
+      <div style="display:flex;gap:10px;font-size:15px;line-height:1.45;color:#46566c;"><span style="color:#138D9C;">•</span>Генерация карточек (фото, видео, тексты)</div>
+      <div style="display:flex;gap:10px;font-size:15px;line-height:1.45;color:#46566c;"><span style="color:#138D9C;">•</span>Аналитика конкурентов и нишевание</div>
+    </div>
+    <p style="font-size:16px;line-height:1.6;color:#46566c;"><b style="color:#14243a;">Цена.</b> Free tier: 500 запросов/день. Paid: 2 500 запросов/день + расширенный доступ.</p>
+    <p style="font-size:16px;line-height:1.6;color:#46566c;"><b style="color:#14243a;">Зачем тестировать на неделе.</b> С учётом изменения комиссий на WB, Ozon и ЯМ — покажет, какие категории пострадали меньше всего и куда перекинуть бюджет на закупку.</p>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
+      <div style="font-size:14px;color:#62748c;">Открыть: <a href="https://sellerden.ru/sellerfox">sellerden.ru/sellerfox</a></div>
+      <div style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#15745A;"><span style="width:7px;height:7px;border-radius:50%;background:#22AC80;"></span>высокая по обеим платформам</div>
+    </div>
+  </section>
+
+  <!-- Guide -->
+  <section id="guide" class="sec" style="scroll-margin-top:80px;margin-bottom:24px;">
+    <div style="background:linear-gradient(160deg,#0E1825,#16263A);border-radius:24px;padding:clamp(24px,5vw,40px);box-shadow:0 20px 50px -28px rgba(14,24,37,.6);">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#5BD3AD;margin-bottom:16px;">Гайд недели</div>
+      <h3 style="font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(22px,4vw,30px);line-height:1.15;color:#fff;margin:0 0 14px;letter-spacing:-0.01em;">Не убьёт ли вас следующее изменение платформы: 5 вопросов</h3>
+      <p style="font-size:17px;line-height:1.6;color:#B3C0D0;margin:0;">Задать себе эти вопросы до следующего изменения — сильно дешевле, чем разбираться после. Отвечать честно, письменно.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;margin-top:16px;">
+
+      <div class="card" style="background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:18px;padding:clamp(20px,4vw,30px);box-shadow:0 1px 2px rgba(16,28,44,.04),0 14px 34px -24px rgba(16,28,44,.2);">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;color:#22AC80;line-height:1;">1</span>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(18px,3vw,22px);color:#14243a;margin:0;line-height:1.2;">Какая доля выручки идёт через один канал?</h4>
+        </div>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Что делать.</b> Посмотри отчёты за последние 3 месяца. Посчитай, сколько процентов выручки приходит через самый большой канал (обычно WB или Ozon).</p>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Зачем.</b> Если один канал даёт больше 60% выручки — ты на арендованной земле. Одно изменение комиссий или логики категорий — и минус 20–30% маржи за месяц.</p>
+        <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(34,172,128,.08);border-radius:12px;padding:12px 14px;margin-top:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#15745A;flex:0 0 auto;padding-top:2px;">KPI</span><span style="font-size:15px;line-height:1.5;color:#46566c;">Целевая доля любого канала — не больше 50%. Если больше 70% — красный флаг, срочно строить второй канал.</span></div>
+      </div>
+
+      <div class="card" style="background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:18px;padding:clamp(20px,4vw,30px);box-shadow:0 1px 2px rgba(16,28,44,.04),0 14px 34px -24px rgba(16,28,44,.2);">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;color:#22AC80;line-height:1;">2</span>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(18px,3vw,22px);color:#14243a;margin:0;line-height:1.2;">Кто знает моего клиента — я или платформа?</h4>
+        </div>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Что делать.</b> Посчитай, сколько email/телефонов клиентов у тебя в базе. Сколько из них подписаны на твой Telegram-канал, Instagram* или получают рассылку.</p>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Зачем.</b> Если 100% контактов знает только маркетплейс — ты продаёшь клиентов маркетплейсу, а не себе. При изменении алгоритма ты теряешь их навсегда.</p>
+        <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(34,172,128,.08);border-radius:12px;padding:12px 14px;margin-top:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#15745A;flex:0 0 auto;padding-top:2px;">KPI</span><span style="font-size:15px;line-height:1.5;color:#46566c;">Минимум 30% клиентов — в собственной базе (email, TG, Instagram*). Целевая — 60%.</span></div>
+      </div>
+
+      <div class="card" style="background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:18px;padding:clamp(20px,4vw,30px);box-shadow:0 1px 2px rgba(16,28,44,.04),0 14px 34px -24px rgba(16,28,44,.2);">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;color:#22AC80;line-height:1;">3</span>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(18px,3vw,22px);color:#14243a;margin:0;line-height:1.2;">Что будет, если платформа выключит меня завтра?</h4>
+        </div>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Что делать.</b> Мысленный эксперимент: WB блокирует твой аккаунт на 30 дней. Что происходит с бизнесом? Сколько выручки сохраняешь через другие каналы за первый месяц?</p>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Зачем.</b> Это стресс-тест. Если ответ «ноль» — у тебя нет бизнеса, у тебя есть арендованная витрина в чужом магазине.</p>
+        <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(34,172,128,.08);border-radius:12px;padding:12px 14px;margin-top:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#15745A;flex:0 0 auto;padding-top:2px;">KPI</span><span style="font-size:15px;line-height:1.5;color:#46566c;">Целевая — сохранять &gt;30% выручки через 30 дней после «выключения» одного канала.</span></div>
+      </div>
+
+      <div class="card" style="background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:18px;padding:clamp(20px,4vw,30px);box-shadow:0 1px 2px rgba(16,28,44,.04),0 14px 34px -24px rgba(16,28,44,.2);">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;color:#22AC80;line-height:1;">4</span>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(18px,3vw,22px);color:#14243a;margin:0;line-height:1.2;">Какую категорию категорически нельзя автоматизировать?</h4>
+        </div>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Что делать.</b> Пересмотри линейку. Отметь SKU, где решение принимается через доверие (личный рецепт, сложный вкус, эмоциональная категория, здоровье, дети), а не через простое сравнение цен.</p>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Зачем.</b> AI-агенты хорошо работают на «простых» покупках. Но «крем для ребёнка с атопией» — покупатель хочет говорить с человеком.</p>
+        <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(34,172,128,.08);border-radius:12px;padding:12px 14px;margin-top:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#15745A;flex:0 0 auto;padding-top:2px;">KPI</span><span style="font-size:15px;line-height:1.5;color:#46566c;">Минимум 20% ассортимента — в категориях, где решение принимается не через AI-агента. Это ваш защитный ров на 2–3 года.</span></div>
+      </div>
+
+      <div class="card" style="background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:18px;padding:clamp(20px,4vw,30px);box-shadow:0 1px 2px rgba(16,28,44,.04),0 14px 34px -24px rgba(16,28,44,.2);">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;color:#22AC80;line-height:1;">5</span>
+          <h4 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(18px,3vw,22px);color:#14243a;margin:0;line-height:1.2;">Кто в команде отвечает за мониторинг изменений платформ?</h4>
+        </div>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Что делать.</b> Назначь одного человека, который еженедельно проверяет: WB/Ozon/ЯМ анонсы, изменения тарифов, обновления «Честного знака», новые AI-платформы.</p>
+        <p style="font-size:17px;line-height:1.65;"><b style="color:#14243a;">Зачем.</b> Изменения платформ происходят раз в 2–4 недели. Нельзя позволить себе узнать о них от покупателя, который уже не смог найти ваш товар.</p>
+        <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(34,172,128,.08);border-radius:12px;padding:12px 14px;margin-top:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#15745A;flex:0 0 auto;padding-top:2px;">KPI</span><span style="font-size:15px;line-height:1.5;color:#46566c;">Еженедельный отчёт «Что изменилось за неделю» — 1 страница: обзор + действия.</span></div>
+      </div>
+
+    </div>
+
+    <div class="card" style="background:linear-gradient(135deg,#22AC80,#138D9C);border-radius:20px;padding:clamp(22px,4vw,32px);margin-top:16px;box-shadow:0 20px 44px -26px rgba(19,141,156,.6);">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:16px;">Финальный чек-лист</div>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+        <li style="display:flex;gap:12px;font-size:17px;line-height:1.5;color:#fff;"><span style="flex:0 0 auto;">✓</span><span>Ни один канал не даёт больше 50% выручки.</span></li>
+        <li style="display:flex;gap:12px;font-size:17px;line-height:1.5;color:#fff;"><span style="flex:0 0 auto;">✓</span><span>Минимум 30% клиентов — в собственной базе (email/TG/Instagram*).</span></li>
+        <li style="display:flex;gap:12px;font-size:17px;line-height:1.5;color:#fff;"><span style="flex:0 0 auto;">✓</span><span>Стресс-тест «выключение одного канала» пройден с сохранением &gt;30% выручки.</span></li>
+        <li style="display:flex;gap:12px;font-size:17px;line-height:1.5;color:#fff;"><span style="flex:0 0 auto;">✓</span><span>Минимум 20% ассортимента в «непростых» категориях, где AI-агенты не заменяют доверие.</span></li>
+        <li style="display:flex;gap:12px;font-size:17px;line-height:1.5;color:#fff;"><span style="flex:0 0 auto;">✓</span><span>Есть человек в команде, который еженедельно отслеживает изменения платформ.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======= EPILOGUE ======= -->
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;margin-top:16px;">
+    <span style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:13px;letter-spacing:.02em;color:#22AC80;">Э</span>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(22px,4vw,30px);color:#14243a;margin:0;letter-spacing:-0.01em;">Эпилог</h2>
+  </div>
+
+  <section id="legal" class="sec card" style="scroll-margin-top:80px;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:22px;padding:clamp(22px,4vw,34px);margin:20px 0 24px;box-shadow:0 1px 2px rgba(16,28,44,.04),0 18px 40px -26px rgba(16,28,44,.2);">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#15745A;margin-bottom:12px;">Не только про деньги</div>
+    <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(20px,3.4vw,26px);line-height:1.25;color:#14243a;margin:0 0 20px;">Юридические риски D2C в США</h3>
+    <p style="font-size:18px;line-height:1.72;">9 июля в Expansio провели эфир с Алексеем Лузаном — юридическим консультантом D2C-брендов в Лос-Анджелесе. Клиенты — бренды от $1 до $5+ млн/мес. Главный навык: переводить «нельзя» в «как можно с минимальным риском».</p>
+
+    <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(16,28,44,.09);margin:22px 0;">
+      <img src="digest/legal-call-screenshot.png" alt="Кадр с эфира: разбор кейса FDA recall, январь 2026" style="width:100%;display:block;" />
+    </div>
+    <p style="font-size:14px;line-height:1.5;color:#8A9BB0;margin:-8px 0 22px;">Кадр с эфира — разбор кейса FDA recall (январь 2026): прямые расходы, ~$800K заморожено дистрибьютором, позиция Amazon как дистрибьютора, хвост исков.</p>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A9BB0;margin:22px 0 10px;">6 зон, которые стоит закрыть до того, как придут</div>
+    <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px;">
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Подписки.</b> Consent перед кнопкой «купить» — один плагин за $20/мес на Shopify. $200 тыс. оборота на подписках без consent → штраф в шестизначных цифрах.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Клеймы.</b> Implied-клейм («у меня болел живот, выпил — прошло») юридически так же опасен, как прямой. Любая цифра + орган + заболевание = федеральное регулирование.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Recalls.</b> Кейс Rowdy Mermaid: проигнорировали FDA → отзыв на $3 млн → class action на $9 млн. FDA не изымает принудительно, но публикует статью «ваш продукт убивает людей» — за день смерть бренда.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Prop 65 (Калифорния).</b> Тяжёлые металлы есть в любом кофе — закон требует не доказать вред, а предупредить. Поставь warning только на CA-сегменте через Shopify и продолжай продавать.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Корпоративная структура.</b> Single-member LLC + физлицо в реестре = суд выносит решение на физлицо напрямую. Board meeting minutes нужно оформлять документально.</span></li>
+      <li style="display:flex;gap:12px;font-size:17px;line-height:1.55;"><span style="color:#22AC80;font-weight:800;flex:0 0 auto;">→</span><span><b style="color:#14243a;">Анализ конкурентов.</b> Все судебные кейсы и FTC settlements в США открыты. Смотри, за что наказали лидера ниши, — и не повторяй его клеймы, не понимая их цену.</span></li>
+    </ul>
+
+    <div style="background:rgba(34,172,128,.07);border-radius:14px;padding:20px 22px;">
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#14243a;font-style:italic;">«Compliance — это про стоимость риска. Понимаешь цену проблемы — принимаешь осознанное решение. Слепое незнание стоит дороже всего.»</p>
+    </div>
+  </section>
+
+  <!-- CTA · Club -->
+  <section class="sec card" style="background:linear-gradient(160deg,#0E1825,#16263A);border-radius:24px;padding:clamp(24px,5vw,40px);margin-bottom:24px;box-shadow:0 20px 50px -28px rgba(14,24,37,.6);">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#5BD3AD;margin-bottom:16px;">Вступить в Expansio</div>
+    <p style="font-size:17px;line-height:1.62;color:#B3C0D0;margin:0 0 20px;">Expansio — закрытое сообщество русскоязычных основателей в e-commerce.</p>
+    <ul style="list-style:none;padding:0;margin:0 0 26px;display:flex;flex-direction:column;gap:12px;">
+      <li style="display:flex;gap:12px;font-size:16px;line-height:1.55;color:#fff;"><span style="color:#5BD3AD;flex:0 0 auto;">→</span><span>Как ведущие бренды в США и Азии строят продукт не как карточку в маркетплейсе, а как ответ на задачу покупателя.</span></li>
+      <li style="display:flex;gap:12px;font-size:16px;line-height:1.55;color:#fff;"><span style="color:#5BD3AD;flex:0 0 auto;">→</span><span>Какие узкие ниши открываются в категориях ваших соседей по клубу — быстрее, чем платформа их закроет тарифом.</span></li>
+      <li style="display:flex;gap:12px;font-size:16px;line-height:1.55;color:#fff;"><span style="color:#5BD3AD;flex:0 0 auto;">→</span><span>Что работает на Amazon, Shopify, WB, Ozon на следующие 6–12 месяцев в мире agentic AI.</span></li>
+    </ul>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;">
+      <a href="https://sbsite.pro/Expansio_best_1?utm_source=digest&amp;utm_medium=cta&amp;utm_campaign=digest_010&amp;utm_content=letter_cta&amp;utm_term=2026_07_13" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#22AC80,#138D9C);color:#04241A;font-weight:700;font-size:16px;padding:14px 24px;border-radius:14px;text-decoration:none;box-shadow:0 12px 28px -12px rgba(34,172,128,.6);">Вступить в Expansio →</a>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#8A9BB0;">10 000 ₽/мес</span>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer style="margin-top:32px;padding-top:32px;border-top:1px solid rgba(16,28,44,.1);">
+    <img src="digest/expansio-lockup-navy.svg" alt="Expansio" style="height:24px;display:block;margin-bottom:16px;">
+    <p style="font-size:13px;line-height:1.6;color:#8A9BB0;margin:0;max-width:60ch;">Expansio Digest #10 · 13.07.2026. Материал носит информационный характер. * Instagram принадлежит Meta, признанной экстремистской и запрещённой в РФ.</p>
+    <a href="#top" class="no-print" style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#15745A;">↑ Наверх</a>
+  </footer>
+
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { readTime: '' };
+
+  componentDidMount() {
+    try {
+      const main = document.getElementById('top');
+      const words = (main ? main.innerText : '').trim().split(/\s+/).length;
+      const mins = Math.max(1, Math.round(words / 180));
+      this.setState({ readTime: '~' + mins + ' мин чтения' });
+    } catch (e) { this.setState({ readTime: '' }); }
+
+    this._onScroll = () => {
+      const el = this.progressRef;
+      if (!el) return;
+      const h = document.documentElement;
+      const max = (h.scrollHeight - h.clientHeight) || 1;
+      const pct = Math.min(100, Math.max(0, (h.scrollTop || window.scrollY) / max * 100));
+      el.style.width = pct + '%';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+
+  renderVals() {
+    return {
+      readTime: this.state.readTime,
+      progressRef: (el) => { this.progressRef = el; },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -10,6 +10,25 @@ const analyticsPassword = process.env.ANALYTICS_PASSWORD || "";
 
 let poolPromise;
 
+// Выпуски, от свежего к старому. Первый становится главной страницей.
+// Новый выпуск = папка public/digests/<id>/ + строка здесь.
+const digests = [
+  {
+    id: "10",
+    date: "13.07.2026",
+    title: "Платформы меняют роли быстрее, чем ты успеваешь адаптироваться"
+  },
+  {
+    id: "09",
+    date: "06.07.2026",
+    title: "Одни платят платформе. Другие — получают от неё трафик"
+  }
+];
+
+const digestsDir = join(publicDir, "digests");
+const latestDigest = digests[0];
+const digestIds = new Set(digests.map((digest) => digest.id));
+
 const mimeTypes = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -20,7 +39,9 @@ const mimeTypes = {
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".webp": "image/webp",
-  ".ico": "image/x-icon"
+  ".ico": "image/x-icon",
+  ".woff2": "font/woff2",
+  ".woff": "font/woff"
 };
 
 function resolvePath(url) {
@@ -263,16 +284,112 @@ async function handleAnalytics(req, res) {
   }
 }
 
+function sendNotFound(res) {
+  res.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
+  res.end("Not found");
+}
+
+function redirect(res, location, permanent) {
+  res.writeHead(permanent ? 301 : 302, { location, "cache-control": "no-cache" });
+  res.end();
+}
+
 function serveFile(res, filePath) {
+  // Проверяем файл до отправки заголовков: иначе ошибка чтения прилетает уже
+  // после writeHead, обработчика у потока нет и падает весь процесс.
+  if (!existsSync(filePath) || !statSync(filePath).isFile()) {
+    sendNotFound(res);
+    return;
+  }
+
   res.writeHead(200, {
     "content-type": mimeTypes[extname(filePath)] || "application/octet-stream",
     "cache-control": extname(filePath) === ".html" ? "no-cache" : "public, max-age=3600"
   });
-  createReadStream(filePath).pipe(res);
+
+  const stream = createReadStream(filePath);
+  stream.on("error", (error) => {
+    console.error("Read error:", filePath, error);
+    res.destroy();
+  });
+  stream.pipe(res);
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function renderArchive() {
+  const cards = digests
+    .map((digest, index) => `
+      <a class="card" href="/digest/${escapeHtml(digest.id)}">
+        <span class="meta">
+          Выпуск #${escapeHtml(digest.id)} · ${escapeHtml(digest.date)}
+          ${index === 0 ? '<b class="latest">свежий</b>' : ""}
+        </span>
+        <span class="title">${escapeHtml(digest.title)}</span>
+      </a>`)
+    .join("");
+
+  return `<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expansio Digest — все выпуски</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EEF2F7;color:#14243a;font-family:'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;
+       padding:clamp(28px,7vw,64px) 20px;min-height:100vh}
+  .wrap{max-width:760px;margin:0 auto}
+  .kicker{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.14em;
+          text-transform:uppercase;color:#8A9BB0;margin-bottom:10px}
+  h1{font-size:clamp(26px,5vw,38px);letter-spacing:-.02em;margin-bottom:28px}
+  .card{display:block;background:#fff;border:1px solid rgba(16,28,44,.09);border-radius:18px;
+        padding:20px 22px;margin-bottom:12px;text-decoration:none;
+        transition:transform .15s,box-shadow .15s,border-color .15s}
+  .card:hover{transform:translateY(-2px);border-color:rgba(23,166,124,.5);
+              box-shadow:0 14px 32px rgba(14,24,37,.1)}
+  .meta{display:flex;align-items:center;gap:8px;font-family:ui-monospace,monospace;font-size:11px;
+        letter-spacing:.1em;text-transform:uppercase;color:#8A9BB0;margin-bottom:6px}
+  .latest{font-style:normal;color:#15745A;background:rgba(34,172,128,.12);
+          padding:3px 8px;border-radius:999px}
+  .title{display:block;font-size:17px;font-weight:600;line-height:1.4;color:#14243a}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="kicker">Expansio · Дайджест</div>
+    <h1>Все выпуски</h1>
+    ${cards}
+  </div>
+</body>
+</html>`;
+}
+
+function sendHtml(res, status, html) {
+  res.writeHead(status, {
+    "content-type": "text/html; charset=utf-8",
+    "cache-control": "no-cache"
+  });
+  res.end(html);
+}
+
+// /digest/10/digest/fonts/x.woff2 -> { id: "10", rest: "digest/fonts/x.woff2" }
+function matchDigest(pathname) {
+  const match = pathname.match(/^\/digest\/([^/]+)(\/.*)?$/);
+  if (!match) {
+    return null;
+  }
+  return { id: decodeURIComponent(match[1]), rest: match[2] || "" };
 }
 
 createServer(async (req, res) => {
-  const pathname = new URL(req.url || "/", "http://localhost").pathname;
+  const pathname = decodeURIComponent(new URL(req.url || "/", "http://localhost").pathname);
 
   if (pathname === "/api/track") {
     await handleTrack(req, res);
@@ -284,6 +401,15 @@ createServer(async (req, res) => {
     return;
   }
 
+  if (pathname === "/api/digests") {
+    res.writeHead(200, {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "public, max-age=300"
+    });
+    res.end(JSON.stringify(digests));
+    return;
+  }
+
   if (pathname === "/analytics" || pathname === "/analytics.html") {
     if (!requireAuth(req, res)) {
       return;
@@ -292,11 +418,48 @@ createServer(async (req, res) => {
     return;
   }
 
+  // Главная — всегда свежий выпуск. Старые ссылки на корень продолжают работать.
+  if (pathname === "/") {
+    redirect(res, `/digest/${latestDigest.id}`, false);
+    return;
+  }
+
+  if (pathname === "/archive" || pathname === "/archive/") {
+    sendHtml(res, 200, renderArchive());
+    return;
+  }
+
+  const digest = matchDigest(pathname);
+  if (digest) {
+    if (!digestIds.has(digest.id)) {
+      sendHtml(res, 404, renderArchive());
+      return;
+    }
+
+    // Без слеша в конце браузер разрешает относительные пути выпуска
+    // (support.js, digest/fonts/...) от /digest/, а не от /digest/10/.
+    if (digest.rest === "") {
+      redirect(res, `/digest/${digest.id}/`, true);
+      return;
+    }
+
+    const digestDir = join(digestsDir, digest.id);
+    const asset = digest.rest === "/" ? "index.html" : digest.rest.slice(1);
+    const filePath = join(digestDir, normalize(asset));
+
+    if (!filePath.startsWith(`${digestDir}/`)) {
+      sendNotFound(res);
+      return;
+    }
+
+    serveFile(res, filePath);
+    return;
+  }
+
   const filePath = resolvePath(req.url || "/");
 
-  if (!filePath.startsWith(publicDir) || !existsSync(filePath) || !statSync(filePath).isFile()) {
-    res.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
-    res.end("Not found");
+  if (!filePath.startsWith(publicDir)) {
+    sendNotFound(res);
     return;
   }
 
